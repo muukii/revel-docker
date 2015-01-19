@@ -1,5 +1,4 @@
 FROM google/golang
-FROM library/mysql
 
 MAINTAINER Muukii <muukii.muukii@gmail.com>
 
