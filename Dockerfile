@@ -9,8 +9,7 @@ ENV PATH /root/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin
 RUN mkdir -p /root/go
 
 RUN sudo apt-get update -y && apt-get dist-upgrade -fy
-RUN apt-get install -y build-essential mercurial git subversion wget curl
-RUN apt-get install zsh
+RUN apt-get install -y build-essential mercurial git subversion wget curl zsh
 
 # go 1.3 tarball
 RUN wget -qO- http://golang.org/dl/go1.3.linux-amd64.tar.gz | tar -C /usr/local -xzf -
