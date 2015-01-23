@@ -31,6 +31,8 @@ RUN apt-get install -y \
 # go 1.3 tarball
 RUN wget -qO- http://golang.org/dl/go1.3.linux-amd64.tar.gz | tar -C /usr/local -xzf -
 
+RUN go get github.com/revel/cmd/revel
+
 RUN useradd -s /bin/zsh -m muukii
 RUN echo 'muukii ALL=(ALL:ALL) NOPASSWD:ALL' | tee /etc/sudoers.d/dev
 USER muukii
