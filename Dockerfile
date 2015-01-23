@@ -36,7 +36,7 @@ ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:
 
 
 # GOPATH
-RUN mkdir -p /home/muukii/local
+RUN mkdir -p /home/muukii/local/go
 
 # go 1.3 tarball
 RUN wget -qO- http://golang.org/dl/go1.3.3.linux-amd64.tar.gz | tar -C /home/muukii/local/go -xzf -
