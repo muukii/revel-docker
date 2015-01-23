@@ -22,7 +22,7 @@ ENV GOROOT /home/muukii/local/go
 ENV PATH $GOROOT:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
 # GOPATH
-RUN mkdir -p /root/go
+RUN mkdir -p $GOPATH
 
 RUN sudo apt-get update -y && apt-get dist-upgrade -fy
 RUN apt-get install -y \
