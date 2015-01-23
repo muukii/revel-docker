@@ -41,7 +41,7 @@ RUN mkdir -p /home/muukii/local/go
 # go 1.3 tarball
 RUN wget -qO- http://golang.org/dl/go1.3.3.linux-amd64.tar.gz | tar -C /home/muukii/local/go -xzf -
 
-RUN go get github.com/revel/cmd/revel
+RUN sudo muukii && go get github.com/revel/cmd/revel
 
 
 RUN git clone https://github.com/muukii0803/dotfiles.git ~/dotfiles
