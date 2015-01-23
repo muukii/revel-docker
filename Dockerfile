@@ -26,8 +26,7 @@ RUN apt-get install -y \
 	curl \
 	zsh \
 	vim \
-	tmux \
-	\
+	tmux 
 
 # go 1.3 tarball
 RUN wget -qO- http://golang.org/dl/go1.3.linux-amd64.tar.gz | tar -C /usr/local -xzf -
