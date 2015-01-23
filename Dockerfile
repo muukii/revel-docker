@@ -32,13 +32,14 @@ ENV HOME /home/muukii
 # User vars
 ENV GOPATH /home/muukii/go
 ENV GOROOT /home/muukii/local/go
-ENV PATH $GOROOT:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
 
 # GOPATH
 RUN mkdir -p /home/muukii/local
 
 # go 1.3 tarball
-RUN wget -qO- http://golang.org/dl/go1.3.3.linux-amd64.tar.gz | tar -C /home/muukii/local -xzf -
+RUN wget -qO- http://golang.org/dl/go1.3.3.linux-amd64.tar.gz | tar -C /home/muukii/local/go -xzf -
 
 RUN go get github.com/revel/cmd/revel
 
