@@ -25,6 +25,7 @@ RUN apt-get install -y \
 # Generate User
 RUN useradd -s /bin/zsh -m muukii
 RUN echo 'muukii ALL=(ALL:ALL) NOPASSWD:ALL' | tee /etc/sudoers.d/dev
+RUN gpasswd -a muukii root
 ENV HOME /home/muukii
 
 # Go
@@ -34,6 +35,7 @@ RUN mkdir -p /usr/local/bin
 ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin:
 RUN wget -qO- http://golang.org/dl/go1.3.3.linux-amd64.tar.gz | tar -C /usr/local/bin -xzf -
 RUN go get github.com/revel/cmd/revel
+RUN chmod 775 -R /go
 
 # Setup MySQL (5.6.21)
 #WORKDIR /tmp
