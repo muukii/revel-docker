@@ -9,21 +9,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-# User
-RUN useradd -s /bin/zsh -m muukii
-RUN echo 'muukii ALL=(ALL:ALL) NOPASSWD:ALL' | tee /etc/sudoers.d/dev
-USER muukii
-WORKDIR /home/muukii
-ENV HOME /home/muukii
-
-# env vars
-ENV GOPATH /home/muukii/go
-ENV GOROOT /home/muukii/local/go
-ENV PATH $GOROOT:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-
-# GOPATH
-RUN mkdir -p $GOPATH
-
+# env
 RUN sudo apt-get update -y && apt-get dist-upgrade -fy
 RUN apt-get install -y \
 	build-essential \
@@ -35,6 +21,21 @@ RUN apt-get install -y \
 	zsh \
 	vim \
 	tmux
+
+# User
+RUN useradd -s /bin/zsh -m muukii
+RUN echo 'muukii ALL=(ALL:ALL) NOPASSWD:ALL' | tee /etc/sudoers.d/dev
+USER muukii
+WORKDIR /home/muukii
+ENV HOME /home/muukii
+
+# User vars
+ENV GOPATH /home/muukii/go
+ENV GOROOT /home/muukii/local/go
+ENV PATH $GOROOT:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+# GOPATH
+RUN mkdir -p $GOPATH
 
 # go 1.3 tarball
 RUN wget -qO- https://storage.googleapis.com/golang/go1.3.3.linux-amd64.tar.gz | tar -C /home/muukii/local -xzf -
