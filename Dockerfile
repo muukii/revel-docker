@@ -9,6 +9,8 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
+ENV DOCKER_CONTAINER YES
+
 # env
 RUN sudo apt-get update -y && apt-get dist-upgrade -fy
 RUN apt-get install -y \
