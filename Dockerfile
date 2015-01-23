@@ -32,7 +32,7 @@ ENV HOME /home/muukii
 ENV GOPATH /go
 ENV GOROOT /usr/local/bin/go
 RUN mkdir -p /usr/local/bin
-ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin:
+ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH:
 RUN wget -qO- http://golang.org/dl/go1.3.3.linux-amd64.tar.gz | tar -C /usr/local/bin -xzf -
 RUN go get github.com/revel/cmd/revel
 RUN chmod 775 -R /go
