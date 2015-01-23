@@ -14,7 +14,7 @@ RUN apt-get install -y build-essential mercurial git subversion wget curl zsh
 # go 1.3 tarball
 RUN wget -qO- http://golang.org/dl/go1.3.linux-amd64.tar.gz | tar -C /usr/local -xzf -
 
-RUN git clone https://github.com/muukii0803/dotfiles ~/dotfiles
+RUN git clone https://github.com/muukii0803/dotfiles.git ~/dotfiles
 RUN bash ~/dotfiles/symlink.sh
 
 ENTRYPOINT [ "/usr/bin/zsh" ]
