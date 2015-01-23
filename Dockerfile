@@ -38,7 +38,7 @@ ENV PATH $GOROOT:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u
 RUN mkdir -p $GOPATH
 
 # go 1.3 tarball
-RUN wget -qO- https://storage.googleapis.com/golang/go1.3.3.linux-amd64.tar.gz | tar -C /home/muukii/local -xzf -
+RUN wget -qO- http://golang.org/dl/go1.3.3.linux-amd64.tar.gz | tar -C /home/muukii/local -xzf -
 
 RUN go get github.com/revel/cmd/revel
 
