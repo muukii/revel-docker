@@ -4,14 +4,10 @@ MAINTAINER Muukii
 
 ENV HOSTNAME [Revel]
 
-ENV LC_MESSAGES=ja_JP.UTF-8
-ENV LC_IDENTIFICATION=ja_JP.UTF-8
-ENV LC_COLLATE=ja_JP.UTF-8
-ENV LANG=ja_JP.UTF-8
-ENV LC_MEASUREMENT=ja_JP.UTF-8
-ENV LC_CTYPE=ja_JP.UTF-8
-ENV LC_TIME=ja_JP.UTF-8
-ENV LC_NAME=ja_JP.UTF-8
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8
 
 # env vars
 ENV GOPATH /root/go
@@ -43,5 +39,6 @@ ENV HOME /home/muukii
 
 RUN git clone https://github.com/muukii0803/dotfiles.git ~/dotfiles
 RUN bash ~/dotfiles/symlink.sh
+RUN mkdir develop 
 
 #ENTRYPOINT [ "/usr/bin/zsh" ]
