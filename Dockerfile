@@ -8,7 +8,7 @@ ENV PATH /root/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin
 # GOPATH
 RUN mkdir -p /root/go
 
-RUN apt-get update
+RUN apt-get update -y && apt-get dist-upgrade -fy
 RUN apt-get install -y build-essential mercurial git subversion wget curl
 RUN apt-get install zsh
 
