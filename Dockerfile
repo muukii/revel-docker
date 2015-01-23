@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTAINER Muukii
+MAINTAINER Muukii <muukii.muukii@gmail.com>
 
 ENV HOSTNAME [Revel]
 
@@ -36,13 +36,13 @@ RUN wget -qO- http://golang.org/dl/go1.3.3.linux-amd64.tar.gz | tar -C /usr/loca
 RUN go get github.com/revel/cmd/revel
 
 # Setup MySQL (5.6.21)
-WORKDIR /tmp
-RUN wget -q http://downloads.mysql.com/archives/get/file/MySQL-5.6.21-1.el7.x86_64.rpm-bundle.tar
-RUN tar -xvf MySQL-5.6.21-1.el7.x86_64.rpm-bundle.tar
-RUN rpm -Uh MySQL-client-5.6.21-1.el7.x86_64.rpm
-RUN rpm -Uh MySQL-server-5.6.21-1.el7.x86_64.rpm
-WORKDIR /root
-RUN service mysql start
+#WORKDIR /tmp
+#RUN wget -q http://downloads.mysql.com/archives/get/file/MySQL-5.6.21-1.el7.x86_64.rpm-bundle.tar
+#RUN tar -xvf MySQL-5.6.21-1.el7.x86_64.rpm-bundle.tar
+#RUN rpm -Uh MySQL-client-5.6.21-1.el7.x86_64.rpm
+#RUN rpm -Uh MySQL-server-5.6.21-1.el7.x86_64.rpm
+#WORKDIR /root
+#RUN service mysql start
 
 # User env
 USER muukii
