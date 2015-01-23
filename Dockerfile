@@ -18,3 +18,4 @@ RUN wget -qO- http://golang.org/dl/go1.3.linux-amd64.tar.gz | tar -C /usr/local 
 RUN git clone https://github.com/muukii0803/dotfiles ~/dotfiles
 RUN bash ~/dotfiles/symlink.sh
 
+ENTRYPOINT [ "/usr/bin/zsh" ]
