@@ -40,5 +40,6 @@ ENV HOME /home/muukii
 RUN git clone https://github.com/muukii0803/dotfiles.git ~/dotfiles
 RUN bash ~/dotfiles/symlink.sh
 RUN mkdir develop 
+RUN mkdir .ssh
 
 #ENTRYPOINT [ "/usr/bin/zsh" ]
