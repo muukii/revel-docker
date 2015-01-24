@@ -50,10 +50,12 @@ RUN chmod 775 -R /go
 
 # User env
 USER muukii
-WORKDIR /home/muukii
-
+WORKDIR /home/muukii/
 RUN git clone https://github.com/muukii0803/dotfiles.git ~/dotfiles
-RUN bash ~/dotfiles/symlink.sh
+WORKDIR /home/muukii/dotfiles
+RUN make symlink
+RUN make vim
+WORKDIR /home/muukii
 RUN mkdir develop
 RUN mkdir .ssh
 
