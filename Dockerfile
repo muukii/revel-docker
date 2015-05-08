@@ -38,9 +38,8 @@ RUN wget -qO- http://golang.org/dl/go1.3.3.linux-amd64.tar.gz | tar -C /usr/loca
 RUN go get github.com/revel/cmd/revel
 RUN chmod 775 -R /go
 
-# Setup MySQL
-RUN apt-get -y install mysql-server
-RUN service mysql start
+# Setup MySQL (5.6)
+RUN apt-get -y install mysql-server-5.6
 
 # User env
 USER muukii
@@ -55,3 +54,5 @@ RUN mkdir .ssh
 
 # Define default command.
 CMD ["/bin/zsh"]
+
+CMD service mysql start
