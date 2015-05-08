@@ -39,7 +39,7 @@ RUN go get github.com/revel/cmd/revel
 RUN chmod 775 -R /go
 
 # Setup MySQL
-RUN apt-get install mysql-server
+RUN apt-get -y install mysql-server
 RUN service mysql start
 
 # User env
