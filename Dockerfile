@@ -55,4 +55,4 @@ RUN mkdir .ssh
 # Define default command.
 CMD ["/bin/zsh"]
 
-CMD service mysql start
+# CMD service mysql start
