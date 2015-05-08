@@ -17,7 +17,6 @@ RUN apt-get install -y \
 	build-essential \
 	mercurial \
 	git \
-	subversion \
 	wget \
 	curl \
 	zsh \
@@ -39,14 +38,9 @@ RUN wget -qO- http://golang.org/dl/go1.3.3.linux-amd64.tar.gz | tar -C /usr/loca
 RUN go get github.com/revel/cmd/revel
 RUN chmod 775 -R /go
 
-# Setup MySQL (5.6.21)
-#WORKDIR /tmp
-#RUN wget -q http://downloads.mysql.com/archives/get/file/MySQL-5.6.21-1.el7.x86_64.rpm-bundle.tar
-#RUN tar -xvf MySQL-5.6.21-1.el7.x86_64.rpm-bundle.tar
-#RUN rpm -Uh MySQL-client-5.6.21-1.el7.x86_64.rpm
-#RUN rpm -Uh MySQL-server-5.6.21-1.el7.x86_64.rpm
-#WORKDIR /root
-#RUN service mysql start
+# Setup MySQL
+RUN apt-get install mysql-server
+RUN service mysql start
 
 # User env
 USER muukii
