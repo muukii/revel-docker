@@ -42,6 +42,13 @@ RUN chmod 775 -R /go
 RUN apt-get -y install mysql-server
 RUN service mysql start
 
+# MySQL config
+ADD mysql-listen.cnf /etc/mysql/conf.d/mysql-listen.cnf
+RUN (/usr/bin/mysqld_safe &); sleep 3; mysqladmin -u root password 'passw0rd'; (echo 'grant all privileges on *.* to root@"%" identified by "passw0rd" with grant option;' | mysql -u root -ppassw0rd)
+
+# Define mountable directories.
+VOLUME ["/var/lib/mysql"]
+
 # User env
 USER muukii
 WORKDIR /home/muukii/
