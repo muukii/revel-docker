@@ -40,6 +40,7 @@ RUN chmod 775 -R /go
 
 # Setup MySQL (5.6)
 RUN apt-get -y install mysql-server-5.6
+RUN service mysql start
 
 # User env
 USER muukii
@@ -54,5 +55,3 @@ RUN mkdir .ssh
 
 # Define default command.
 CMD ["/bin/zsh"]
-
-# CMD service mysql start
