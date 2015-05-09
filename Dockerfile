@@ -23,6 +23,10 @@ RUN apt-get install -y \
 	vim \
 	tmux
 
+RUN apt-get -y install python-setuptools
+RUN easy_install supervisor
+RUN mkdir -p /var/log/supervisor
+
 # Generate User
 RUN useradd -s /bin/zsh -m muukii
 RUN echo 'muukii ALL=(ALL:ALL) NOPASSWD:ALL' | tee /etc/sudoers.d/dev
@@ -38,9 +42,27 @@ RUN wget -qO- https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz |
 RUN go get github.com/revel/cmd/revel
 RUN chmod 775 -R /go
 
+# Hack for initctl not being available in Ubuntu (for mysql)
+RUN dpkg-divert --local --rename --add /sbin/initctl
+RUN ln -sf /bin/true /sbin/initctl
+
+# supervisor config
+RUN mkdir -p /var/log/supervisor
+ADD supervisord.conf /etc/supervisord.conf
+
 # Setup MySQL (5.6)
 RUN apt-get -y install mysql-server-5.6
 RUN service mysql start
+
+# MySQL config
+ADD mysql-listen.cnf /etc/mysql/conf.d/mysql-listen.cnf
+RUN (/usr/bin/mysqld_safe &); sleep 3; mysqladmin -u root password 'passw0rd'; (echo 'grant all privileges on *.* to root@"%" identified by "passw0rd" with grant option;' | mysql -u root -ppassw0rd)
+
+# Define mountable directories.
+VOLUME ["/var/lib/mysql"]
+
+# Expose ports.
+EXPOSE 22 3306
 
 # User env
 USER muukii
@@ -55,3 +77,4 @@ RUN mkdir .ssh
 
 # Define default command.
 CMD ["/bin/zsh"]
+CMD ["supervisord", "-n"]
