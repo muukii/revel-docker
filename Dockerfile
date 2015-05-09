@@ -43,29 +43,29 @@ RUN go get github.com/revel/cmd/revel
 RUN chmod 775 -R /go
 
 # Hack for initctl not being available in Ubuntu (for mysql)
-RUN dpkg-divert --local --rename --add /sbin/initctl
-RUN ln -sf /bin/true /sbin/initctl
+#RUN dpkg-divert --local --rename --add /sbin/initctl
+#RUN ln -sf /bin/true /sbin/initctl
 
 # supervisor config
-RUN mkdir -p /var/log/supervisor
-ADD supervisord.conf /etc/supervisord.conf
+#RUN mkdir -p /var/log/supervisor
+#ADD supervisord.conf /etc/supervisord.conf
 
 # Setup MySQL (5.6)
-RUN apt-get -y install mysql-server-5.6
-RUN service mysql start
+#RUN apt-get -y install mysql-server-5.6
+#RUN service mysql start
 
 # MySQL config
-ADD mysql-listen.cnf /etc/mysql/conf.d/mysql-listen.cnf
-RUN (/usr/bin/mysqld_safe &); sleep 3; mysqladmin -u root password 'passw0rd'; (echo 'grant all privileges on *.* to root@"%" identified by "passw0rd" with grant option;' | mysql -u root -ppassw0rd)
+#ADD mysql-listen.cnf /etc/mysql/conf.d/mysql-listen.cnf
+#RUN (/usr/bin/mysqld_safe &); sleep 3; mysqladmin -u root password 'passw0rd'; (echo 'grant all privileges on *.* to root@"%" identified by "passw0rd" with grant option;' | mysql -u root -ppassw0rd)
 
 # Define mountable directories.
-VOLUME ["/var/lib/mysql"]
+#VOLUME ["/var/lib/mysql"]
 
 # Expose ports.
-EXPOSE 22 3306
+#EXPOSE 22 3306
 
 # User env
-USER muukii
+USER muukii-docker
 WORKDIR /home/muukii/
 RUN git clone https://github.com/muukii0803/dotfiles.git ~/dotfiles
 WORKDIR /home/muukii/dotfiles
