@@ -28,9 +28,9 @@ RUN easy_install supervisor
 RUN mkdir -p /var/log/supervisor
 
 # Generate User
-RUN useradd -s /bin/zsh -m muukii-docker
+RUN useradd -s /bin/zsh -m muukii
 RUN echo 'muukii ALL=(ALL:ALL) NOPASSWD:ALL' | tee /etc/sudoers.d/dev
-RUN gpasswd -a muukii-docker root
+RUN gpasswd -a muukii root
 ENV HOME /home/muukii
 
 # Go
@@ -51,7 +51,7 @@ RUN chmod 775 -R /go
 #ADD supervisord.conf /etc/supervisord.conf
 
 # Setup MySQL (5.6)
-#RUN apt-get -y install mysql-server-5.6
+RUN apt-get -y install mysql-server-5.5
 #RUN service mysql start
 
 # MySQL config
@@ -65,7 +65,7 @@ RUN chmod 775 -R /go
 #EXPOSE 22 3306
 
 # User env
-USER muukii-docker
+USER muukii
 WORKDIR /home/muukii/
 RUN git clone https://github.com/muukii0803/dotfiles.git ~/dotfiles
 WORKDIR /home/muukii/dotfiles
