@@ -77,4 +77,3 @@ RUN mkdir .ssh
 
 # Define default command.
 CMD ["/bin/zsh"]
-CMD ["supervisord", "-n"]
