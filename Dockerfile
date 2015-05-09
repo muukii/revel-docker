@@ -28,9 +28,9 @@ RUN easy_install supervisor
 RUN mkdir -p /var/log/supervisor
 
 # Generate User
-RUN useradd -s /bin/zsh -m muukii
+RUN useradd -s /bin/zsh -m muukii-docker
 RUN echo 'muukii ALL=(ALL:ALL) NOPASSWD:ALL' | tee /etc/sudoers.d/dev
-RUN gpasswd -a muukii root
+RUN gpasswd -a muukii-docker root
 ENV HOME /home/muukii
 
 # Go
