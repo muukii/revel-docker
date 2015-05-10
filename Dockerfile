@@ -51,7 +51,7 @@ RUN chmod 775 -R /go
 #ADD supervisord.conf /etc/supervisord.conf
 
 # Setup MySQL (5.6)
-RUN apt-get -y install mysql-server-5.5
+RUN apt-get -y install mysql-server-5.6
 #RUN service mysql start
 
 # MySQL config
