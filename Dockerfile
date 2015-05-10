@@ -50,8 +50,8 @@ RUN chmod 775 -R /go
 #RUN mkdir -p /var/log/supervisor
 #ADD supervisord.conf /etc/supervisord.conf
 
-# Setup MySQL (5.6)
-RUN apt-get -y install mysql-server-5.6
+# Setup MySQL Client (5.6)
+RUN apt-get -y install mysql-client-5.6
 #RUN service mysql start
 
 # MySQL config
