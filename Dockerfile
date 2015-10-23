@@ -67,7 +67,7 @@ RUN apt-get -y install mysql-client-5.6
 # User env
 USER muukii
 WORKDIR /home/muukii/
-RUN git clone https://github.com/muukii0803/dotfiles.git ~/dotfiles
+RUN git clone https://github.com/muukii/dotfiles.git ~/dotfiles
 WORKDIR /home/muukii/dotfiles
 RUN make symlink
 RUN make vim
